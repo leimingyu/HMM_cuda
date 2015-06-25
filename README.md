@@ -1,9 +1,10 @@
 # HMM_cuda
 Hidden Markov Model for Isolated Word Recognition on GPU
 
-Author : <div>Leiming Yu </div>
-         <div>ylm@ece.neu.edu</div>
-         Northeastern University, Boston, MA, USA <br>
+Author : 
+<div>      Leiming Yu </div>
+<div>      ylm@ece.neu.edu</div>
+Northeastern University, Boston, MA, USA <br>
          
 
 It is implemented in the following paper. Please refer to it if you want to use. Thanks.
