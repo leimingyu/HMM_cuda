@@ -2,7 +2,6 @@
 Hidden Markov Model for Isolated Word Recognition on GPU
 
 Author :
-
          Leiming Yu
          ylm@ece.neu.edu
          Northeastern University, Boston, MA, USA
