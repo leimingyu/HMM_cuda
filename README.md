@@ -18,3 +18,21 @@ It is implemented in the following paper. Please refer to it if you want to use.
   organization={IEEE}
 }
 ```
+
+Usage:
+```
+To compile:
+	$cmake .
+	$make
+To verify each module:
+	$make test
+	or run each test separately:
+	$./test_forword
+	$./test_backwd
+	$./test_bw
+To run program:
+	$./hmmsr number_of_hidden_states number_of_streams
+	e.g., $./hmmsr 256 4
+To turn on/off hyper-q:
+	change #define HQ 1 or 0
+```
