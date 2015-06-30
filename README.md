@@ -34,5 +34,5 @@ To run program:
 	$./hmmsr number_of_hidden_states number_of_streams
 	e.g., $./hmmsr 256 4
 To turn on/off hyper-q:
-	change #define HQ 1 or 0
+	In hmmsr.cu, change #define HQ 1 or 0.
 ```
