@@ -20,9 +20,6 @@
 	#define SIZE 4096 
 #endif
 
-/// hyper-q
-#define HQ 1
-
 //---------------------------------------------------------------------------//
 // CPU Parameters 
 //---------------------------------------------------------------------------//
@@ -159,6 +156,7 @@ int main(int argc, char *argv[])
 #else
 	printf("Hyper-Q feature is not applied!\n\n");
 #endif
+
 
 	printf("=> Start program.\n\n");
 
