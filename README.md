@@ -33,8 +33,8 @@ To verify each module:
 To run program:
 	$./hmmsr number_of_hidden_states number_of_streams
 	e.g., $./hmmsr 256 4
-To turn on/off hyper-q:
-	In CMakeLists.txt, use NVCC compiler flags to specify.which feature to use.
+
+In CMakeLists.txt, use NVCC compiler flags to specify which feature to use.
 	-DHQ=1 (turn on hyper-q)
 	-DHQ=0 (turn off hyper-q)
 ```
