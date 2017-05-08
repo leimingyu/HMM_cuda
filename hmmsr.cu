@@ -13,11 +13,11 @@
 #include "kernel_bw.h"
 
 #ifndef TILE
-	#define TILE 16	// 2D Kernel Tiling
+#define TILE 16	// 2D Kernel Tiling
 #endif
 
 #ifndef SIZE 
-	#define SIZE 4096 
+#define SIZE 4096 
 #endif
 
 //---------------------------------------------------------------------------//
@@ -384,11 +384,11 @@ void GPU_HMM_Forward()
 	// alpha = b * pri
 	// beta_d initialization for backward algo
 	fwd_init_alpha (b_d, 
-	                pi_d, 
-					N, 
-					&alpha_d[0], 
-					ones_d, 
-					&beta_d[(T-1)*N]);
+			pi_d, 
+			N, 
+			&alpha_d[0], 
+			ones_d, 
+			&beta_d[(T-1)*N]);
 
 	// sum(alpha)
 	ret = cublasSdot(handle, N, &alpha_d[0], 1, ones_d, 1, &ll_d[0]);
@@ -543,13 +543,13 @@ void GPU_HMM_BaumWelch()
 
 		// Calculate beta * B and alpha * beta
 		em_betaB_alphabeta(beta_d, 
-		                   b_d, 
-						   betaB_d, 
-						   alpha_d, 
-						   alpha_beta_d, 
-						   N, 
-				           current, 
-						   previous);
+				b_d, 
+				betaB_d, 
+				alpha_d, 
+				alpha_beta_d, 
+				N, 
+				current, 
+				previous);
 
 		// sum up alpha_beta using cublas
 		ret = cublasSdot(handle, N,
@@ -568,15 +568,15 @@ void GPU_HMM_BaumWelch()
 
 		// A .*  (alpha * betaB')
 		em_A_mul_alphabetaB (&alpha_d[current],
-		                     betaB_d,
-							 bytes_n,
-		                     a_d, 
-		                     A_alphabetaB_d, 
-							 blk_result_d, 
-							 N);
+				betaB_d,
+				bytes_n,
+				a_d, 
+				A_alphabetaB_d, 
+				blk_result_d, 
+				N);
 
 		checkCudaErrors(cudaMemcpyAsync(blk_result, blk_result_d, bytes_tileblks,
-					    cudaMemcpyDeviceToHost));
+					cudaMemcpyDeviceToHost));
 
 		sum = 0.f;	
 #pragma unroll
@@ -588,18 +588,18 @@ void GPU_HMM_BaumWelch()
 		// Normalise A_alphabetaB and add up to xi_sum 
 		//EM_update_xisum <<< grid_3, block_3 >>> (A_alphabetaB_d, xi_sum_d, sum, N);
 		em_update_xisum (A_alphabetaB_d, 
-		                 xi_sum_d, 
-						 sum, 
-						 N);
+				xi_sum_d, 
+				sum, 
+				N);
 	}
 
 	current = previous;
 
 	//EM_alphabeta <<< grid, block >>> (&beta_d[current], &alpha_d[current], alpha_beta_d, N);
 	em_alphabeta (&beta_d[current], 
-	              &alpha_d[current], 
-				  alpha_beta_d, 
-				  N);
+			&alpha_d[current], 
+			alpha_beta_d, 
+			N);
 	ret = cublasSdot(handle, N, alpha_beta_d, 1, ones_d, 1, &ll_d[0]);
 	if (ret != CUBLAS_STATUS_SUCCESS) 
 	{
@@ -630,9 +630,9 @@ void GPU_HMM_BaumWelch()
 
 	// hint: while gpu is running, these "observations" operations can be concurrently run on CPU
 	checkCudaErrors(cudaMemcpyAsync(observations_d, 
-	                                observations, 
-				                    bytes_dt, 
-									cudaMemcpyHostToDevice));
+				observations, 
+				bytes_dt, 
+				cudaMemcpyHostToDevice));
 
 	// EM_transpose<<< grid_9, block_9 >>> (observations_d, observationsT_d, T, D);
 	em_transpose (observations_d, observationsT_d, T, D);
@@ -640,10 +640,11 @@ void GPU_HMM_BaumWelch()
 	int hs;
 
 #if HQ
+
 	//-----------------------------------------------------------------------//
 	// Hyper-Q
 	//-----------------------------------------------------------------------//
-	
+
 	int streamid;
 	for(hs = 0 ; hs < N; ++hs)
 	{
