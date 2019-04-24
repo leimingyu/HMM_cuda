@@ -1,1 +1,3 @@
-static/* linguist-vendered
+*.cu linguist-language=Cuda
+*.cpp linguist-language=C++
+*.c linguist-language=C
