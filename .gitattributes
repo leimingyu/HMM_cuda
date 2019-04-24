@@ -1,3 +1,2 @@
-*.cu linguist-language=Cuda
-*.cpp linguist-language=C++
-*.c linguist-language=C
+* linguist-vendored
+*.cu linguist-vendored=false
