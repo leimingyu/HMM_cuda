@@ -5,7 +5,7 @@
 
 #include <cuda_runtime.h>
 #include <helper_cuda.h>		// check errors
-#include <cublas.h>		      	// cublas
+// #include <cublas.h>		      	// cublas
 #include <cublas_v2.h>	      	// new cublas api: pointer mode
 
 #include "kernel_forward.h"
@@ -41,7 +41,7 @@ float *a_d;
 float *betaB_d;
 
 /// cublas
-cublasStatus ret;                                                               
+cublasStatus_t ret;                                                               
 cublasHandle_t handle, handle1;
 
 /// allocate resource
@@ -68,11 +68,11 @@ void allocate_data()
 	checkCudaErrors(cudaMalloc((void**)&betaB_d, bytes_n));  
 
 	/// cublas
-	ret = cublasInit();                                                         
-	if (ret != CUBLAS_STATUS_SUCCESS) {
-		fprintf (stderr, "ERROR: CUBLAS Initialization failure\n");             
-		exit(EXIT_FAILURE);                                                     
-	}                                                                           
+	// ret = cublasInit();                                                         
+	// if (ret != CUBLAS_STATUS_SUCCESS) {
+	// 	fprintf (stderr, "ERROR: CUBLAS Initialization failure\n");             
+	// 	exit(EXIT_FAILURE);                                                     
+	// }                                                                           
                                                                                 
     ret  = cublasCreate(&handle);
     ret  = cublasCreate(&handle1);

@@ -38,3 +38,10 @@ In CMakeLists.txt, use NVCC compiler flags to specify which feature to use.
 	-DHQ=1 (turn on hyper-q)
 	-DHQ=0 (turn off hyper-q)
 ```
+
+## Updated
+* changed to sm_75 Turing architecture
+* added cublasStatus_t
+* removed cublas.h
+* removed cublasInit()
+* requires https://github.com/NVIDIA/cuda-samples

@@ -20,6 +20,7 @@ endif()
 include_directories(
 /usr/local/cuda/include
 /usr/local/cuda/samples/common/inc
+${CMAKE_SOURCE_DIR}/../../github/cuda-samples/Common
 ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
@@ -46,8 +47,8 @@ set(CUDA_VERBOSE_BUILD off)
 set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};
 -O2
 -DHQ=1 
--gencode arch=compute_30,code=sm_30 
--gencode arch=compute_35,code=sm_35 
+-gencode arch=compute_75,code=sm_75 
+-gencode arch=compute_75,code=sm_75 
 )
 
 ### find cublas

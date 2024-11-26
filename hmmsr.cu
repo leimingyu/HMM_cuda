@@ -5,7 +5,7 @@
 #include <helper_cuda.h>      // check errors                                                            
 #include <helper_functions.h> // timer  
 
-#include <cublas.h>		      // cublas
+// #include <cublas.h>		      // cublas
 #include <cublas_v2.h>	      // new cublas api: pointer mode
 
 #include "kernel_forward.h"
@@ -85,7 +85,7 @@ dim3 block_12(8, 8);
 dim3 grid_12(D/8, D/8);
 
 // cublas	
-cublasStatus ret;
+cublasStatus_t ret;
 cublasHandle_t handle, handle1;	// handler
 float alp = 1.f;
 float bet = 0.f;
@@ -359,12 +359,12 @@ void Release()
 void GPU_HMM_Forward()
 {
 	// Initialize cublas
-	ret = cublasInit();
-	if (ret != CUBLAS_STATUS_SUCCESS) 
-	{
-		fprintf (stderr, "ERROR: CUBLAS Initialization failure\n");
-		exit(EXIT_FAILURE);
-	}
+	// ret = cublasInit();
+	// if (ret != CUBLAS_STATUS_SUCCESS) 
+	// {
+	// 	fprintf (stderr, "ERROR: CUBLAS Initialization failure\n");
+	// 	exit(EXIT_FAILURE);
+	// }
 
 	ret  = cublasCreate(&handle);
 	ret  = cublasCreate(&handle1);
